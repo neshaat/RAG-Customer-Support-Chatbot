@@ -1,0 +1,10 @@
+# Account & Login Help
+
+Forgot your password? Click "Forgot Password" on the login page and enter your email address.
+You will receive a reset link within 5 minutes. Check your spam folder if you don't see it.
+
+To update your email address, go to Account Settings > Personal Info > Edit Email.
+Note: You must verify the new email address before the change takes effect.
+
+For account lockouts (after 5 failed attempts), please contact support@company.com.
+Two-factor authentication (2FA) is available under Account Settings > Security.

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SupportAI — Customer Support Chatbot</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ── Sidebar ── -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <div class="logo">
+        <span class="logo-icon">◈</span>
+        <span class="logo-text">SupportAI</span>
+      </div>
+      <p class="logo-sub">RAG-Powered Assistant</p>
+    </div>
+
+    <nav class="sidebar-nav">
+      <button class="nav-btn active" data-panel="chat">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        Chat
+      </button>
+      <button class="nav-btn" data-panel="analytics">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        Analytics
+      </button>
+    </nav>
+
+    <div class="sidebar-status">
+      <div class="status-row">
+        <span class="status-dot" id="llmStatus"></span>
+        <span>LLaMA 3</span>
+      </div>
+      <div class="status-row">
+        <span class="status-dot" id="kafkaStatus"></span>
+        <span>Kafka</span>
+      </div>
+      <div class="status-row">
+        <span class="status-dot" id="dbStatus"></span>
+        <span>SQLite</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ── Main ── -->
+  <main class="main">
+
+    <!-- Chat Panel -->
+    <section class="panel" id="panelChat">
+      <header class="chat-header">
+        <div>
+          <h1>Customer Support</h1>
+          <p class="chat-sub">Ask about orders, returns, accounts, or products</p>
+        </div>
+        <button class="btn-ghost" id="btnNewChat" title="New conversation">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+      </header>
+
+      <div class="messages" id="messages">
+        <div class="message assistant welcome-msg">
+          <div class="avatar">◈</div>
+          <div class="bubble">
+            <p>Hello! I'm your AI support assistant. I can help you with:</p>
+            <ul>
+              <li>📦 Order tracking &amp; shipping</li>
+              <li>↩️ Returns &amp; refunds</li>
+              <li>👤 Account issues</li>
+              <li>🛍️ Product information</li>
+            </ul>
+            <p>What can I help you with today?</p>
+          </div>
+        </div>
+      </div>
+
+      <footer class="chat-footer">
+        <div class="input-row">
+          <textarea
+            id="userInput"
+            placeholder="Type your question…"
+            rows="1"
+            maxlength="1000"
+          ></textarea>
+          <button class="btn-send" id="btnSend" title="Send">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          </button>
+        </div>
+        <div class="footer-hints">
+          <span>Enter to send</span>
+          <span id="charCount">0 / 1000</span>
+        </div>
+      </footer>
+    </section>
+
+    <!-- Analytics Panel -->
+    <section class="panel hidden" id="panelAnalytics">
+      <header class="chat-header">
+        <div>
+          <h1>Analytics</h1>
+          <p class="chat-sub">Evaluation metrics from your session</p>
+        </div>
+      </header>
+      <div class="analytics-body" id="analyticsBody">
+        <p class="empty-state">No data yet. Send a message to see metrics.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── Detail Drawer (sources / intents / entities) ── -->
+  <div class="drawer-overlay hidden" id="drawerOverlay"></div>
+  <aside class="drawer hidden" id="drawer">
+    <div class="drawer-header">
+      <h2 id="drawerTitle">Details</h2>
+      <button class="btn-ghost" id="btnCloseDrawer">✕</button>
+    </div>
+    <div class="drawer-body" id="drawerBody"></div>
+  </aside>
+
+  <script src="js/chat.js"></script>
+</body>
+</html>
