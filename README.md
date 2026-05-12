@@ -1,3 +1,7 @@
+
+<img width="1920" height="1249" alt="1774286733563" src="https://github.com/user-attachments/assets/4ddc4f78-b437-4fe2-bcfb-7899b978c65d" />
+
+
 # 🤖 RAG Customer Support Chatbot
 
 A local demo project combining LangChain + LLaMA, Multi-Intent NER, RAG pipeline, Kafka event streaming, SQLite DB, ngrok tunneling, and a polished frontend UI.
